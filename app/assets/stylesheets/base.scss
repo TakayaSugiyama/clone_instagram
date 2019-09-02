@@ -5,6 +5,10 @@ body {
 nav {
   box-shadow: 0 0 3px #333;
   background-color: #fff;
+  position: fixed;
+  top:0;
+  width: 100%;
+  z-index: 10;
   a{
     color: #000;
     font-family: 'Chilanka', cursive;
