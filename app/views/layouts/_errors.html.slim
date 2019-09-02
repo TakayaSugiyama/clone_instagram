@@ -1,0 +1,3 @@
+ - if flash[:error_messages]
+  -flash[:error_messages].each do |msg|
+    p.text-danger = msg

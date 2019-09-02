@@ -9,21 +9,25 @@
       .card
         .card-body 
           = form_with(model: @user, local: true) do |f|
+            = render "layouts/errors"
             .form-group
               = f.label :name 
-              = f.text_field :name, class: "form-control"
+              = f.text_field :name, class: "form-control", required: true
             .form-group
               =f.label :email
-              =f.text_field :email, class: "form-control"
+              =f.text_field :email, class: "form-control", required: true
             .form-group 
               =f.label :image 
-              =f.file_field :image, class: "form-control"
+              =f.file_field :image, class: "form-control", required: true
+            .form-group 
+              =f.label :profile 
+              =f.text_area :profile,class: "form-control", required: true
             .form-group 
               =f.label :password 
-              =f.password_field :password, class: "form-control"
+              =f.password_field :password, class: "form-control", required: true
             .form-gorup 
               =f.label :password_confirmation
-              =f.password_field :password_confirmation, class: "form-control"
+              =f.password_field :password_confirmation, class: "form-control", required: true
             .text-center.mt-3
               =f.submit class: "btn btn-primary"
     .col-6
