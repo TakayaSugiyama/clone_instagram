@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :image, presence: true
   has_many :photos
   has_secure_password
+  has_many :favorites
+  has_many :favorites_photos , through: :favorites, source: :photo
 end

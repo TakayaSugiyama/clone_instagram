@@ -3,4 +3,5 @@ class Photo < ApplicationRecord
   validates :photo, presence: true 
   validates :description, presence: true, length: {maximum: 140}
   mount_uploader :photo, PhotoUploader
+  has_many :favorites
 end
