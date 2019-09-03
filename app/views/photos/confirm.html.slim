@@ -1,0 +1,17 @@
+.mt-3
+  h1 確認画面
+  .col-md-6
+    = form_with(model: @photo, local: true, url: photos_path) do |f|
+      = render "layouts/errors"
+      / 確認画面でアップロードした画像を表示させるための記述
+      = image_tag(@photo.photo.thumb.url) if @photo.photo && @photo.photo.url
+      = f.hidden_field :photo_cache 
+      p = @photo.description
+      = f.hidden_field :description
+      .text-center 
+        =f.submit 
+        
+    = form_with(model: @photo, url: new_photo_path, local: true, method: :get) do |f|
+      = f.hidden_field :photo_cache 
+      .text-center
+        = f.submit "戻る", name: "back", class: "mt-2" 

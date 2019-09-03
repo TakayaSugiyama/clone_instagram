@@ -1,0 +1,17 @@
+.mt-3
+  h1 新規投稿
+  .col-md-6
+    = form_with(model: @photo, local: true, url: confirm_photos_path) do |f|
+      = render "layouts/errors"
+      .field
+        .form-group
+          =f.label :photo 
+          =image_tag(@photo.photo.url) if @photo.photo && @photo.photo.url 
+          =f.file_field :photo , class: "form-control"
+          =f.hidden_field :photo_cache
+      .form-group
+        =f.label :description 
+        =f.text_area :description, rows: 3, class: "form-control"
+      .text-center 
+        =f.submit class: "btn btn-primary"
+   
