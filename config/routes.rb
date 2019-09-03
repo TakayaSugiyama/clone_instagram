@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'favorites/creae'
-  get 'favorites/destroy'
+  post "favorite/:photo_id", to: "favorites#create", as: "like"
+  delete "unfavorite/:photo_id", to: "favorites#destroy", as: "unlike"
   resources :photos  do 
     collection do 
       post  :confirm

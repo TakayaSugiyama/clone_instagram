@@ -7,6 +7,13 @@
         投稿日時 = @photo.created_at
         = link_to "編集", edit_photo_path(@photo.user), class: "btn btn-success"
         = link_to "削除", photo_path(@photo), method: :delete, data: {confirm: "本当に削除しますか?"}, class: "btn btn-danger"
+        -if liked?(@photo)
+          = link_to unlike_path(@photo), method: :delete  do 
+             = fa_icon "heart", class: "ml-2 mr-2" ,id: "like"
+        -else 
+          = link_to like_path(@photo), method: :post do 
+            = fa_icon "heart", class: "ml-2 mr-2" ,id: "unlike"
+        = likes_count(@photo)
     .card.col-md-5 
       .card-body 
         = image_tag @photo.user.image.thumb.url , class: "user-profile"
