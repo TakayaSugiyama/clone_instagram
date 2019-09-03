@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorites/creae'
+  get 'favorites/destroy'
   resources :photos  do 
     collection do 
       post  :confirm
