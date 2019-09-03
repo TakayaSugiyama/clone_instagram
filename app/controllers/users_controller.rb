@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   def create 
     @user = User.new(user_params)
     if @user.save 
-      session[:user_id] = @user.i
-      redirect_to user_path(@user.id) ,notice: "アカウントを作成しました"
+      session[:user_id] = @user.id
+      redirect_to @user ,notice: "アカウントを作成しました"
     else 
       redirect_to root_path, flash: {user: @user, error_messages: @user.errors.full_messages}
     end
