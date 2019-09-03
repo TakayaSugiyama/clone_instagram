@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show]
+  before_action :set_photo, only: [:show,:edit,:update]
   def index
     @photos = Photo.all.order(created_at: :desc)
   end
@@ -34,6 +34,14 @@ class PhotosController < ApplicationController
   end
 
   def update
+    if @photo.update(photo_params)
+      redirect_to @photo, notice: "投稿を更新しました"
+    else
+      redirect_to edit_photo_path(@photo) , flash: {photo: @photo, error_messages: @photo.errors.full_messages}
+    end
+  end
+
+  def edit 
   end
 
   private 
