@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show,:edit,:update]
+  before_action :set_photo, only: [:show,:edit,:update,:destroy]
   def index
     @photos = Photo.all.order(created_at: :desc)
   end
@@ -18,6 +18,9 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy 
+    redirect_to photos_path, notice: "投稿を削除しました"
   end
 
   def confirm 

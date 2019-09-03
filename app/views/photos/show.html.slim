@@ -5,6 +5,8 @@
         = image_tag @photo.photo.thumb.url 
       .card-footer 
         投稿日時 = @photo.created_at
+        = link_to "編集", edit_photo_path(@photo.user), class: "btn btn-success"
+        = link_to "削除", photo_path(@photo), method: :delete, data: {confirm: "本当に削除しますか?"}, class: "btn btn-danger"
     .card.col-md-5 
       .card-body 
         = image_tag @photo.user.image.thumb.url , class: "user-profile"
