@@ -16,4 +16,9 @@ class FavoritesController < ApplicationController
     @favorite.destroy 
     redirect_to @photo
   end
+
+  def index 
+    user = User.find(params[:user_id])
+    @photos = user.favorites_photos
+  end
 end
