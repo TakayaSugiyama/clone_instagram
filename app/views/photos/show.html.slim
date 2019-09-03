@@ -1,2 +1,17 @@
-h1 Photos#show
-p Find me in app/views/photos/show.html.slim
+.mt-3
+  .row
+    .card.col-md-5
+      .card-body 
+        = image_tag @photo.photo.thumb.url 
+      .card-footer 
+        投稿日時 = @photo.created_at
+    .card.col-md-5 
+      .card-body 
+        = image_tag @photo.user.image.thumb.url , class: "user-profile"
+        投稿者
+        = link_to "#{@photo.user.name}", user_path(@photo.user)
+      .card-footer
+        p.text-center  内容
+        p = @photo.description
+
+      
