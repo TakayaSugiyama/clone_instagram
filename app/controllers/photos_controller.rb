@@ -1,5 +1,8 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show,:edit,:update,:destroy]
+  before_action :forbid_login_user
+  before_action :only_photo_user, only: [:edit,:update]
+  
   def index
     @photos = Photo.all.order(created_at: :desc)
   end
@@ -55,5 +58,11 @@ class PhotosController < ApplicationController
 
   def photo_params 
     params.require(:photo).permit(:description, :photo,:photo_cache)
+  end
+
+  def only_photo_user
+    if @photo.user.id != current_user.id
+      redirect_to user_path(current_user.id), notice: "権限がありません"
+    end
   end
 end

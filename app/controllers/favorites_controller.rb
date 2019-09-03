@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  before_action :forbid_login_user
   def create
     @photo = Photo.find(params[:photo_id])
     if current_user 
