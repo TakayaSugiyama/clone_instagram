@@ -10,6 +10,7 @@ class PhotosController < ApplicationController
   def create
     @photo = current_user.photos.build(photo_params)
     if @photo.save 
+      PhotoMailer.photo_mail(@photo).deliver 
       redirect_to @photo, notice: "投稿しました"
     else 
       redirect_to new_photo_path, flash: {photo: @photo, error_messages: @photo.errors.full_messages}
