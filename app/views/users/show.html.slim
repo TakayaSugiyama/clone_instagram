@@ -2,5 +2,4 @@
   = image_tag @user.image.url, class: "user-profile"
   p.font-weight-bold.user-name = @user.name
   =link_to "ユーザー情報変更", edit_user_path(@user), class: "btn btn-primary mr-2"
-  =link_to "パスワード変更", "#", class: "btn btn-danger mr-2"
   =link_to "いいねした投稿", "#", class: "btn btn-success"
