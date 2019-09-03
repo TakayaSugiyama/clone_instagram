@@ -11,12 +11,12 @@
           = form_with(scope: :session, local: true) do |f|
             = render "layouts/errors"
             .form-group
-              =f.label :email
+              =f.label :email, "メールアドレス"
               =f.text_field :email, class: "form-control", required: true
             .form-group 
-              =f.label :password 
+              =f.label :password , "パスワード"
               =f.password_field :password, class: "form-control", required: true
             .text-center.mt-3
-              =f.submit class: "btn btn-primary"
+              =f.submit "ログインする",class: "btn btn-primary"
     .col-6
       = image_tag "top.jpg", class: "img-fluid"
