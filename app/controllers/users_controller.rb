@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user ,only: [:show]
+  before_action :set_user ,only: [:show,:edit,:update]
   def new
     @user = User.new(flash[:user])
   end
@@ -16,6 +16,16 @@ class UsersController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @user.update(user_params) || @user.errors.full_messages.size == 2
+      redirect_to @user,notice: "ユーザー情報を更新しました。"
+    else 
+      redirect_to edit_user_path(@user),flash: {user: @user, error_messages: @user.errors.full_messages }
+    end
+  end
   private 
 
   def set_user 

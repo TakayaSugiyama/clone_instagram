@@ -1,0 +1,20 @@
+.mt-3
+  .col-md-6
+    h1 ユーザー情報編集
+    = form_with(model: @user,local: true) do |f|
+      = render "layouts/errors"
+      .form-group 
+        = f.label :name 
+        = f.text_field :name, class: "form-control"
+      .form-group 
+        = f.label :email 
+        =f.text_field :email , class: "form-control"
+      .form-group 
+        = f.label :image
+        = image_tag @user.image.thumb.url
+        = f.file_field :image, class: "form-control"
+      .form-grouup 
+        = f.label :profile 
+        =f.text_area :profile, class: "form-control"
+      .text-center.mt-2
+        = f.submit  class: "btn btn-primary"
