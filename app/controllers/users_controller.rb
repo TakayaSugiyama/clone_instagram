@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params) || @user.errors.full_messages.size == 2
+    if @user.update(user_params) 
       redirect_to @user,notice: "ユーザー情報を更新しました。"
     else 
       redirect_to edit_user_path(@user),flash: {user: @user, error_messages: @user.errors.full_messages }
