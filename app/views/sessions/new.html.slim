@@ -1,0 +1,22 @@
+.mt-4
+  .row 
+    .col-6
+      ul.nav.nav-tabs 
+        li.nav-item 
+          =link_to "登録", root_path, class: "nav-link "
+        li.nav-item 
+          =link_to "ログイン", login_path, class: "nav-link active"
+      .card
+        .card-body 
+          = form_with(scope: :session, local: true) do |f|
+            = render "layouts/errors"
+            .form-group
+              =f.label :email
+              =f.text_field :email, class: "form-control", required: true
+            .form-group 
+              =f.label :password 
+              =f.password_field :password, class: "form-control", required: true
+            .text-center.mt-3
+              =f.submit class: "btn btn-primary"
+    .col-6
+      = image_tag "top.jpg", class: "img-fluid"
