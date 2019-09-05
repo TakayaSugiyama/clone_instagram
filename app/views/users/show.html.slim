@@ -4,3 +4,15 @@
   -if @user.id == current_user.id
     =link_to "ユーザー情報変更", edit_user_path(@user), class: "btn btn-primary mr-2"
     =link_to "いいねした投稿", likes_path(@user), class: "btn btn-success"
+  
+  <h1>フォロー</h1>
+  -@user.following.each do |follow|
+    .mt-4
+      名前= follow.name 
+      = image_tag follow.image.thumb.url 
+  <h1>フォローワー</h1>
+  - @user.followers.each do |follow|
+    .mt-4 
+      名前= follow.name 
+      = image_tag follow.image.thumb.url 
+    
